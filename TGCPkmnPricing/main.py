@@ -1,4 +1,3 @@
-# Date: 07/02/24
 # Author: Yasser Khaloufi
 
 from pokemontcg import *

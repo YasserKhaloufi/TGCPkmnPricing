@@ -1,4 +1,3 @@
-# Date: 07/02/24
 # Author: Yasser Khaloufi
 
 # Summary: Gestisce le interazioni con l'utente (per non scrivere tutto nel main)

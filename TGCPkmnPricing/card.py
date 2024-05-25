@@ -1,4 +1,3 @@
-# Date: 07/02/24
 # Author: Yasser Khaloufi
 
 # Business class carta pokemon, utilizza un dizionario per gli attributi
