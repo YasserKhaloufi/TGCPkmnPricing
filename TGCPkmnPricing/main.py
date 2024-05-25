@@ -8,13 +8,15 @@ while 1:
     # Clear console
     print("\033c")
     cards = getCardByPkmnName(askForPkmnName())
+    found = False # Sentinella
 
     if cards == []:
         print("No cards found with that name")
     else:
+        found = True
         printCardsDisplayInfo(cards)
         
-    while 1:    
+    while found:    
         while 1:
             print("\n")
             card = getCardFromListByID(cards, askForID())
