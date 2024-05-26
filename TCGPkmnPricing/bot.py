@@ -20,20 +20,38 @@ async def on_ready():
 # Grazie all'asincronicità il bot può gestire più interazioni contemporaneamente
 @bot.command()
 async def Get(ctx): # ctx sta per context e contiene tutte le info della conversazione (es. contenuto messaggio)
-    pokeName = ctx.message.content[len(ctx.prefix + ctx.command.name):] # Rimuovi il prefisso del comando dal messaggio (con l'operatore ":" prendo tutta la stringa dopo l'indice indicato)
-    cards = getCardByPkmnName(pokeName.strip())
+    pkmnName = ctx.message.content[len(ctx.prefix + ctx.command.name):] # Rimuovi il prefisso del comando dal messaggio (con l'operatore ":" prendo tutta la stringa dopo l'indice indicato)
+    cards = getCardByPkmnName(pkmnName.strip())
     
     response = "No card found with that name"
     
     if cards != []:
         response = getCardsDisplayInfo(cards)
         
-        # Suddividi il messaggio in parti di 4000 caratteri
-        message_parts = [response[i:i+2000] for i in range(0, len(response), 2000)]
+        # Gestione limite 2000 caratteri per messaggio
+        # Suddividi il messaggio in righe
+        lines = response.split('\n')
+        
+        # Crea una lista per contenere i vari messaggi
+        messages = []
+        message = ""
+        
+        # Aggiungi righe al messaggio corrente finché non raggiungi il limite di 2000 caratteri
+        for line in lines:
+            # Se aggiungendo una nuova riga al messaggio superi i 2000 caratteri
+            if len(message) + len(line) + 1 > 2000:  # (+1 per il carattere '\n')
+                # Allora fermati e inizia a costruire il prossimo
+                messages.append(message) 
+                message = ""          
+            message += line + "\n"
+
+        # Aggiungi l'ultima parte del messaggio se non è vuota (per quando sono finite le linee, ma l'ultima rimane fuori)
+        if message:
+            messages.append(message)
 
         # Invia ogni parte come un messaggio separato
-        for part in message_parts:
-            await ctx.send(part)
+        for m in messages:
+            await ctx.send(m)
     else:
         await ctx.send(response)
 
