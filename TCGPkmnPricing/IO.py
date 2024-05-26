@@ -21,6 +21,10 @@ def printCardsDisplayInfo(cards) -> None:
     print(tabulate([[card.name, card.id, card.set['releaseDate']] for card in cards], headers=['Name', 'ID', 'Release Date']))
     # [print(f"Name:{getattr(card, 'name')} ID:{getattr(card, 'id')}\n") for card in cards]
     
+def getCardsDisplayInfo(cards) -> str:
+    str = tabulate([[card.name, card.id, card.set['releaseDate']] for card in cards], headers=['Name', 'ID', 'Release Date'])
+    return str
+    
 def getCardFromListByID(cards, ID) -> Card:
     for card in cards:
         if card.id == ID:

@@ -1,6 +1,6 @@
 # Author: Yasser Khaloufi
 
-from pokemontcg import *
+from tcgAPI_Interface import *
 from IO import *
 
 while 1:
