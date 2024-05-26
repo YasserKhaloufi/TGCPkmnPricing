@@ -2,6 +2,14 @@
 
 This project aims to interact with users through a Discord bot or a quick terminal application to provide information about Pokemon cards.
 
+## APIs Used
+
+This project uses the following APIs:
+
+- [Pokemon TCG API](https://pokemontcg.io/): This API is used to fetch information about Pokemon cards.
+
+Remember to obtain your own API keys for these services and place them in the `secret.py` file as `TCG_API_KEY`.
+
 ## Structure
 
 The project is structured into four main modules:
