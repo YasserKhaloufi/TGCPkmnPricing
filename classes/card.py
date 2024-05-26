@@ -35,7 +35,6 @@ class Card:
             return tabulate([values], headers=headers)
         else:
             return "No prices found for this card"
-        
     
         """
             Me del futuro, ricordati di sta roba che ci stavi smattando sopra: 
