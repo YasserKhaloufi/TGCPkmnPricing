@@ -1,7 +1,10 @@
 # Author: Yasser Khaloufi
 
-from tcgAPI_Interface import *
-from IO import *
+# Summary: Applicazione da terminale per esplorare velocemente le funzionalità dell'interfaccia all'API
+
+# personali
+from ..APIs.tcgAPI_Interface import getCardByPkmnName
+from ..terminalApp.terminal_IO import *
 
 while 1:
     # Clear console
@@ -32,4 +35,5 @@ while 1:
         if(input("\nWanna continue checking on the same pkmn? (y/n): ") != 'y'):
             break
         
-    input("\n--Press Enter to continue...")
+    if(input("\nContinue? (y/n):") != 'y'):
+        break

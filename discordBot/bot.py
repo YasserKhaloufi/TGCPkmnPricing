@@ -1,13 +1,14 @@
+# Author: Yasser Khaloufi
+
+# Summary: Definisce il flusso di esecuzione del bot, non che i parametri di configurazione
+
 # ext
 import discord
 from discord.ext import commands
-
 # personali
-from tcgAPI_Interface import getCardByPkmnName
-from secret import DISCORD_KEY
-from IO import getCardsDisplayInfo
-from IO import fragmentResponse
-from IO import getInput
+from ..APIs.tcgAPI_Interface import getCardByPkmnName
+from ..discordBot.discordIO import *
+from ..secret import DISCORD_KEY
 
 # il bot deve ricevere eventi relativi ai contenuti dei messaggi.
 intents = discord.Intents.default()

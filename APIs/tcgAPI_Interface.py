@@ -1,10 +1,12 @@
 # Author: Yasser Khaloufi
 
-# Summary: Static functions that act as an interface to get data from the Pokemon TCG API
+# Summary: Funzioni statiche che fanno da interfaccia con l'API pokemontcg
 
+# ext
 from requests import get
-from card import *
-from secret import POKEMON_KEY
+# personali
+from ..classes.card import Card
+from ..secret import POKEMON_KEY
 
 BASE_URL = "https://api.pokemontcg.io/v2"
 HEADERS = {"X-Api-Key": POKEMON_KEY}

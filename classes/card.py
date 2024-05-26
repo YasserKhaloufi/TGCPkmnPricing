@@ -1,7 +1,8 @@
 # Author: Yasser Khaloufi
 
-# Business class carta pokemon, utilizza un dizionario per gli attributi
+# Summary: Business class carta pokemon, utilizza un dizionario per gli attributi
 
+# ext
 from tabulate import tabulate
 
 class Card:
