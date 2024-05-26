@@ -7,6 +7,7 @@ from tabulate import tabulate
 from PIL import Image
 from requests import *
 from io import BytesIO
+import asyncio
 
 # TERMINALE
 def askForPkmnName() -> str:
@@ -69,3 +70,16 @@ def fragmentResponse(response) -> list[str]:
         Discord utilizza un font monospazio per il testo formattato come codice (racchiuso tra backticks), ma per il testo normale utilizza un font proporzionale, in cui diversi caratteri possono avere larghezze diverse, questo mi dava problemi con l'allineamento del testo (gli spazi vuoti apparivano su discord meno larghi rispetto a come li vedevo in debugging) in sintesi, in una normale chat di discord era praticamente illeggibile (i vari campi erano sfasati).
         Il workaround è l'uso del formato di codice di Discord, abilitato nel momento in cui il messaggio è racchiuso tra ```.
     """
+    
+async def getInput(bot, ctx, timeout, admittedValues, request, error):
+    await ctx.send(request)
+    
+    def check(received):
+        return received.author == ctx.author and received.channel == ctx.channel and received.content in admittedValues
+
+    try:
+        user_input = await bot.wait_for('message', check=check, timeout=timeout)
+        return user_input.content
+    except asyncio.TimeoutError:
+        await ctx.send(error)
+        return None    

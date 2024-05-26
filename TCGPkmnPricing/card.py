@@ -13,7 +13,11 @@ class Card:
 
     def getAllCardMarketPrices(self) -> dict:
         # self.cardmarket['prices'] contiene tutti i prezzi
-        return self.cardmarket['prices']
+        # Controlla se 'cardmarket' esiste prima di cercare di accedervi
+        if hasattr(self, 'cardmarket'):
+            return self.cardmarket['prices']
+        else:
+            return {}
 
     def returnTabulatedPricesString(self) -> str:
         """
@@ -24,9 +28,13 @@ class Card:
         # .keys e .values restituiscono delle view sul dizionario, non sapendo esattamente come funzionino, converto in liste
         # (la conversione non è esplicita tramite un cast, ma la faccio con una comprehension)
         prices = self.getAllCardMarketPrices()
-        headers = [keys for keys, values in prices.items() if values != 0]
-        values = [f"{values}$" for values in prices.values() if values != 0]
-        return tabulate([values], headers=headers)
+        if prices != {}:
+            headers = [keys for keys, values in prices.items() if values != 0]
+            values = [f"{values}$" for values in prices.values() if values != 0]
+            return tabulate([values], headers=headers)
+        else:
+            return "No prices found for this card"
+        
     
         """
             Me del futuro, ricordati di sta roba che ci stavi smattando sopra: 

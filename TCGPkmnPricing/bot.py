@@ -1,14 +1,13 @@
 # ext
 import discord
 from discord.ext import commands
-import asyncio
 
 # personali
 from tcgAPI_Interface import getCardByPkmnName
 from secret import DISCORD_KEY
 from IO import getCardsDisplayInfo
 from IO import fragmentResponse
-
+from IO import getInput
 
 # il bot deve ricevere eventi relativi ai contenuti dei messaggi.
 intents = discord.Intents.default()
@@ -38,25 +37,26 @@ async def Get(ctx): # ctx sta per context e contiene tutte le info della convers
         for message in messages:
             await ctx.send(message)
             
-        # Chiedi all'utente di scegliere una carta
-        await ctx.send("Insert the ID of the card you want")
-        
-        def check(received):
-            # Si assicura che l'utente sia quello che ha iniziato l'interazione e che il messaggio provenga dal medesimo canale e che la risposta contenga effettivamente l'ID di una delle carte
-            return received.author == ctx.author and received.channel == ctx.channel and received.content in [card.id for card in cards]
-        
-        try:
-            # Aspetta il messaggio che soddisfa le condizioni sopra, con un timeout di 120 secondi
-            cardID = await bot.wait_for('message', check=check, timeout=120.0)
-        except asyncio.TimeoutError:
-            await ctx.send('Sorry, you took too long to choose a card.')
-        else:
-            # Trova la carta scelta dall'utente
-            chosen_card = next(card for card in cards if card.id == cardID.content)
+        while 1:
             
-            # Invia l'immagine della carta ed i prezzi di mercato
-            await ctx.send(chosen_card.images['large'])
-            await ctx.send("```" + chosen_card.returnTabulatedPricesString() + "```")
+            # Chiedi all'utente di scegliere una carta
+            cardID = await getInput(bot, ctx, 120.0, [card.id for card in cards], "Insert the ID of the card you want", "Sorry, it took you too long to choose a card")
+            
+            if cardID is None: # L'utente non ha risposto in tempo, chiudi la conversazione
+                break
+            else:
+                # Trova la carta scelta dall'utente
+                chosen_card = next(card for card in cards if card.id == cardID)
+                
+                # Invia l'immagine della carta ed i prezzi di mercato
+                await ctx.send(chosen_card.images['large'])
+                await ctx.send("```" + chosen_card.returnTabulatedPricesString() + "```")
+                
+            # Ripeti lo stesso processo per chiedere all'utente se vuole continuare ad esplorare le carte dello stesso pokemon o meno
+            choice = await getInput(bot, ctx, 120.0, ['y', 'n'], "Wanna continue checking on the same pkmn? (y/n)", "Sorry, it took you too long to respond")
+            
+            if choice is None or choice.lower() == 'n': # chiudi la conversazione
+                break
     else:
         await ctx.send(response)
         
