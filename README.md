@@ -1,22 +1,25 @@
 # Pokemon Card Bot/Terminal
 
-This project aims to interact with users through a terminal application or Discord bot to provide information about Pokemon cards.
+This project aims to interact with users through a Discord bot or a quick terminal application to provide information about Pokemon cards.
 
 ## Structure
 
 The project is structured into four main modules:
 
-- `APIs`: This folder contains the module that implements the interface to the Trading card game API.
-- `classes`: This folder contains the `Card` class which is used to represent a Pokemon card.
 - `discordBot`: This folder contains the the Discord bot implementation.
 - `terminalApp`: This folder contains the terminal application implementation.
+- `APIs`: This folder contains the module that implements the interface to the Trading card game API.
+- `classes`: This folder contains the `Card` class which is used to represent a Pokemon card.
 
 ## Usage
 
 ### Discord Bot
 
 To use the Discord bot, you need to have a Discord bot token. This should be placed in the `secret.py` file as `DISCORD_KEY`.
-To execute `bot.py` navigate to the folder where you downloaded the repository and execute this command: python -m TGCPkmnPricing.discordBot.bot
+To execute `bot.py` navigate to the folder where you downloaded the repository and execute this command: 
+```bash
+python -m TGCPkmnPricing.discordBot.bot
+```
 
 The bot responds to the following commands:
 
@@ -26,7 +29,10 @@ The bot responds to the following commands:
 
 The aim of this part is so you can quickly test the functions of this project via CLI, without having to create a discord bot.
 
-Run the `main.py` script in the `terminalApp` directory. To execute this navigate to the folder where you downloaded the repository and execute this command: python -m TGCPkmnPricing.terminalApp.main
+Run the `main.py` script in the `terminalApp` directory. To execute this navigate to the folder where you downloaded the repository and execute this command: 
+```bash
+python -m TGCPkmnPricing.terminalApp.main
+```
 You will be prompted to enter the name of a Pokemon. After entering the name, you will be shown a list of cards for that Pokemon. You can then enter the ID of a card to get more information about it.
 
 ## Dependencies
