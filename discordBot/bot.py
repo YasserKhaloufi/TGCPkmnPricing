@@ -69,7 +69,7 @@ async def Help(ctx):
     - `Get <Pokemon name>`: Search for all cards of the specified Pokemon. After showing the cards, I will ask you to choose a card by entering its ID. Finally, I will post the image and market prices of the chosen card.
     If you do not choose a card within 120 seconds, the conversation will be closed and you will need to send a Get command again
 
-    - Show this help message.
+    - `Help` Show this help message.
 
     The commands are case-sensitive and make sure to write the names of the Pokemon correctly!
     """
