@@ -24,12 +24,8 @@ The project is structured into four main modules:
 ### Discord Bot
 
 To use the Discord bot, you need to have a Discord bot token. This should be placed in the `secret.py` file as `DISCORD_KEY`.
-To execute `bot.py` you could both use the command 
-```bash 
-python bot.py 
-``` 
-depending from the path you execute the command from,
-or simply open the script using a text editor with python debug extension such as vs code.
+To execute `bot.py` you could both use the command `python bot.py` depending from the path you execute the command from,
+or you could simply open the script using a text editor with python debug extension such as vs code.
 
 The bot responds to the following commands:
 
@@ -45,14 +41,10 @@ The commands are case-sensitive and make sure to write the names of the Pokemon 
 
 The aim of this part is so you can quickly test the functions of this project via CLI, without having to create a discord bot.
 
-Run the `main.py` script in the `terminalApp` directory. To execute this you could both use the command 
-```bash 
-python main.py 
-``` 
-depending from the path you execute the command from, or simply open and execute the script using a text editor with python debug extension such as vs code.
+Run the `main.py` script in the `terminalApp` directory. To execute this you could both use the command `python main.py` 
+depending from the path you execute the command from, or you could simply open and execute the script using a text editor with python debug extension such as vs code.
 
-Depending on what feature you choose will be prompted to enter the name of a Pokemon. After entering the name, you will be shown a list of cards for that Pokemon. You can then enter the ID of a card to get more information about it.
-Or you will be returned a random pokemon card.
+Depending on what feature you choose will be prompted to enter the name of a Pokemon or you will be returned a random pokemon card. In the first case, after entering the name, you will be shown a list of cards for that Pokemon. You can then enter the ID of a card to get more information about it.
 Upon choosing or getting a card its image should pop up on image viewer utility.
 
 ## Dependencies
