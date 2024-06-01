@@ -8,6 +8,8 @@ from requests import *
 import asyncio
 
 def getCardsDisplayInfo(cards) -> str:
+    # Riordino le carte per data di rilascio
+    cards.sort(key=lambda card: card.set['releaseDate'])
     str = tabulate([[card.name, card.id, card.set['releaseDate']] for card in cards], headers=['Name', 'ID', 'Release Date'])
     return str
     
