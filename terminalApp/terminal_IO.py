@@ -3,12 +3,18 @@
 # Summary: Gestisce le interazioni con l'utente (per non scrivere tutto nel main)
 
 # ext
+import os
+import sys
 from tabulate import tabulate
 from PIL import Image
 from requests import *
 from io import BytesIO
+
 # personali
-from ..classes.card import Card
+# ricavo il path della cartella superiore allo script corrente e lo aggiungo a sys
+dir_path = os.path.dirname(os.path.realpath(__file__))+"\.."
+sys.path.append(dir_path)
+from classes.card import Card
 
 def askForPkmnName() -> str:
     return input("Insert Pokemon name:")

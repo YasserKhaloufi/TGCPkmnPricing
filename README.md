@@ -24,24 +24,28 @@ The project is structured into four main modules:
 ### Discord Bot
 
 To use the Discord bot, you need to have a Discord bot token. This should be placed in the `secret.py` file as `DISCORD_KEY`.
-To execute `bot.py` navigate to the folder where you downloaded the repository and execute this command: 
-```bash
-python -m TGCPkmnPricing.discordBot.bot
-```
+To execute `bot.py` you could both use the command ```bash python bot.py ``` depending from the path you execute the command from,
+or simply open the script using a text editor with python debug extension such as vs code.
 
 The bot responds to the following commands:
 
 - `Get <Pokemon name>`: Search for all cards of the specified Pokemon. After showing the cards, the bot will ask you to choose a card by entering its ID. Finally, the bot will post the image and market prices of the chosen card. If you do not choose a card within 120 seconds, the conversation will be closed and you will need to send a Get command again.
 
+- `Random`: Returns a random pokemon card
+
+- `Help` Show this help message.
+
+The commands are case-sensitive and make sure to write the names of the Pokemon correctly!
+
 ### Terminal Application
 
 The aim of this part is so you can quickly test the functions of this project via CLI, without having to create a discord bot.
 
-Run the `main.py` script in the `terminalApp` directory. To execute this navigate to the folder where you downloaded the repository and execute this command: 
-```bash
-python -m TGCPkmnPricing.terminalApp.main
-```
-You will be prompted to enter the name of a Pokemon. After entering the name, you will be shown a list of cards for that Pokemon. You can then enter the ID of a card to get more information about it.
+Run the `main.py` script in the `terminalApp` directory. To execute this you could both use the command ```bash python main.py ``` depending from the path you execute the command from, or simply open and execute the script using a text editor with python debug extension such as vs code.
+
+Depending on what feature you choose will be prompted to enter the name of a Pokemon. After entering the name, you will be shown a list of cards for that Pokemon. You can then enter the ID of a card to get more information about it.
+Or you will be returned a random pokemon card.
+Upon choosing or getting a card its image should pop up on image viewer utility.
 
 ## Dependencies
 
@@ -50,6 +54,9 @@ This project depends on the following Python libraries:
 - `tabulate`
 - `PIL`
 - `requests`
+- `io`
+- `sys`
+- `random` 
 
 ## Note
 
